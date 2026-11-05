@@ -1,0 +1,7 @@
+{
+  "name": "ABFS",
+  "description": "Organize task lists and store daily research notes with cloud persistence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

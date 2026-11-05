@@ -1,0 +1,111 @@
+{
+  "entities": {
+    "ResearchNote": {
+      "title": "ResearchNote",
+      "description": "A daily research note containing structured observations, references, and findings.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the research note."
+        },
+        "content": {
+          "type": "string",
+          "description": "Detailed body content or markdown summary."
+        },
+        "topic": {
+          "type": "string",
+          "description": "Research category or field of study."
+        },
+        "tags": {
+          "type": "array",
+          "description": "List of search tags (max 10)."
+        },
+        "date": {
+          "type": "string",
+          "description": "Observation date in YYYY-MM-DD format."
+        },
+        "isPinned": {
+          "type": "boolean",
+          "description": "Whether this note is pinned to top."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": ["userId", "title", "content", "topic", "tags", "date", "isPinned", "createdAt", "updatedAt"]
+    },
+    "TaskItem": {
+      "title": "TaskItem",
+      "description": "An actionable task or experiment checklist item.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "title": {
+          "type": "string",
+          "description": "Action title of the task."
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional details or instructions."
+        },
+        "category": {
+          "type": "string",
+          "description": "Task category like Reading, Lab, Writing, or Routine."
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Task priority level."
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "Target completion date in YYYY-MM-DD format."
+        },
+        "isCompleted": {
+          "type": "boolean",
+          "description": "Completion status flag."
+        },
+        "subtasks": {
+          "type": "array",
+          "description": "Subtask checklist string items."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": ["userId", "title", "category", "priority", "dueDate", "isCompleted", "subtasks", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/notes/{noteId}": {
+      "schema": "ResearchNote",
+      "description": "User daily research notes collection."
+    },
+    "/tasks/{taskId}": {
+      "schema": "TaskItem",
+      "description": "User tasks and experiment checklists."
+    }
+  }
+}
